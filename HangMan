@@ -1,0 +1,300 @@
+import pygame
+import sys
+from pygame import font
+import FinalGUIModule
+pygame.init()
+display_width = 1500
+display_height = 800
+gameDisplay = pygame.display.set_mode((display_width,display_height))
+pygame.display.set_caption('A Good Day to Hang')
+white = (255,255,255)
+clock = pygame.time.Clock()
+hangImg1 = pygame.image.load('HangmanGUIPost.png')
+hangImg2 = pygame.image.load('HangmanGUIHead.png')
+hangImg3 = pygame.image.load('HangmanGUIBody.png')
+hangImg4 = pygame.image.load('HangmanGUILeftArm.png')
+hangImg5 = pygame.image.load('HangmanGUILeftHand.png')
+hangImg6 = pygame.image.load('HangmanGUIRightArm.png')
+hangImg7 = pygame.image.load('HangmanGUIRightHand.png')
+hangImg8= pygame.image.load('HangmanGUILeftLeg.png')
+hangImg9 = pygame.image.load('HangmanGUIRightLeg.png')
+hangImg10 = pygame.image.load('HangmanGUILeftDumb.png')
+hangImg11 = pygame.image.load('HangmanGUIRightDumb.png')
+WinPic0 = pygame.image.load('HangmanGUIWinIPost.png')
+WinPic1 = pygame.image.load('HangmanGUIWiniHead.png')
+WinPic2 = pygame.image.load('HangmanGUIWiniBod.png')
+WinPic3 = pygame.image.load('HangmanGUIWiniLBic.png')
+WinPic4 = pygame.image.load('HangmanGUIWiniLHand.png')
+WinPic5 = pygame.image.load('HangmanGUIWiniRBic.png')
+WinPic6 = pygame.image.load('HangmanGUIWiniRhand.png')
+WinPic7 = pygame.image.load('HangmanGUIWinLLeg.png')
+WinPic8 = pygame.image.load('HangmanGUIWiniRLeg.png')
+WinPic9 = pygame.image.load('HangmanGUIWiniLDumb.png')
+def Win0(x,y):
+    gameDisplay.blit(WinPic0, (x,y))
+def Win1(x,y):
+    gameDisplay.blit(WinPic1, (x,y))
+def Win2(x,y):
+    gameDisplay.blit(WinPic2, (x,y))
+def Win3(x,y):
+    gameDisplay.blit(WinPic3, (x,y))
+def Win4(x,y):
+    gameDisplay.blit(WinPic4, (x,y))
+def Win5(x,y):
+    gameDisplay.blit(WinPic5, (x,y))
+def Win6(x,y):
+    gameDisplay.blit(WinPic6, (x,y))
+def Win7(x,y):
+    gameDisplay.blit(WinPic7, (x,y))
+def Win8(x,y):
+    gameDisplay.blit(WinPic8, (x,y))
+def Win9(x,y):
+    gameDisplay.blit(WinPic9, (x,y))
+def hang1(x,y):
+    gameDisplay.blit(hangImg1, (x,y))
+def hang2(x,y):
+    gameDisplay.blit(hangImg2, (x,y))
+def hang3(x,y):
+    gameDisplay.blit(hangImg3, (x,y))
+def hang4(x,y):
+    gameDisplay.blit(hangImg4, (x,y))
+def hang5(x,y):
+    gameDisplay.blit(hangImg5, (x,y))
+def hang6(x,y):
+    gameDisplay.blit(hangImg6, (x,y))
+def hang7(x,y):
+    gameDisplay.blit(hangImg7, (x,y))
+def hang8(x,y):
+    gameDisplay.blit(hangImg8, (x,y))
+def hang9(x,y):
+    gameDisplay.blit(hangImg9, (x,y))
+def hang10(x,y):
+    gameDisplay.blit(hangImg10, (x,y))
+def hang11(x,y):
+    gameDisplay.blit(hangImg11, (x,y))
+def intro():
+    message_display(ubuntu,30,(0,0,0),(525,30),'WELCOME TO THE HANGMAN PYTHON PRACTICE TEST')
+    message_display(ubuntu,30,(0,0,0),(525,60),'We will ask you {0} questions, 10 wrong answers equal death'.format(skyball))
+    message_display(ubuntu,30,(0,0,0),(525,90),'You select which choice is the correct answer. Eg. A, B, C or D')
+def RectColor():
+    pygame.draw.rect(gameDisplay, [192, 192, 192], button5)
+    pygame.draw.rect(gameDisplay, [192, 192, 192], button)
+    pygame.draw.rect(gameDisplay, [192, 192, 192], button2)
+    pygame.draw.rect(gameDisplay, [192, 192, 192], button3)
+    pygame.draw.rect(gameDisplay, [192, 192, 192], button4)
+    pygame.draw.rect(gameDisplay, [192, 192, 192],exitbutton)
+def search_font(name):
+    found_font = font.match_font(name)
+    return found_font
+def message_display(used_font, size, color,xy,message):
+    font_object = pygame.font.Font(used_font, size)
+    rendered_text = font_object.render(message, True, (color))
+    gameDisplay.blit(rendered_text,(xy))
+    pygame.display.update()
+def scores():
+    message_display(ubuntu,30,(0,0,0),(720,280),'Your current score is ' + str(score) + ' out of {0}'.format(skyball))
+
+def gui():
+    crashed = False
+    while not crashed:
+        global i
+        global score
+        global answer1
+        global Q
+        global A
+        global v
+        global b
+        global n
+        global m
+        global T
+
+        for event in pygame.event.get():
+            if i == 0:
+                if (i == 0) and (score == skyball):
+                    gameDisplay.fill(white)
+                    Win0(x,y)
+                    break
+                else:
+                    gameDisplay.fill(white)
+                    hang1(x,y)
+                    clock.tick(30)
+            elif i == 1:
+
+                if (i == 1) and (score == skyball):
+                    gameDisplay.fill(white)
+                    Win1(x,y)
+                else:
+                    gameDisplay.fill(white)
+                    hang2(x,y)
+                    clock.tick(30)
+            elif i == 2:
+                if (i == 2) and (score == skyball):
+                    gameDisplay.fill(white)
+                    Win2(x,y)
+                else:
+                    gameDisplay.fill(white)
+                    hang3(x,y)
+                    clock.tick(30)
+            elif i == 3:
+                if (i == 3) and (score == skyball):
+                    gameDisplay.fill(white)
+                    Win3(x,y)
+                else:
+                    gameDisplay.fill(white)
+                    hang4(x,y)
+                    clock.tick(30)
+            elif i == 4:
+                if (i == 4) and (score == skyball):
+                    gameDisplay.fill(white)
+                    Win4(x,y)
+                else:
+                    gameDisplay.fill(white)
+                    hang5(x,y)
+                    clock.tick(30)
+            elif i == 5:
+                if (i == 5) and (score == skyball):
+                    gameDisplay.fill(white)
+                    Win5(x,y)
+                else:
+                    gameDisplay.fill(white)
+                    hang6(x,y)
+                    clock.tick(30)
+            elif i == 6:
+                if (i == 6) and (score == skyball):
+                    gameDisplay.fill(white)
+                    Win6(x,y)
+                else:
+                    gameDisplay.fill(white)
+                    hang7(x,y)
+                    clock.tick(30)
+            elif i == 7:
+                if (i == 7) and (score == skyball):
+                    gameDisplay.fill(white)
+                    Win7(x,y)
+                else:
+                    gameDisplay.fill(white)
+                    hang8(x,y)
+                    clock.tick(30)
+            elif i == 8:
+                if (i == 8) and (score == skyball):
+                    gameDisplay.fill(white)
+                    Win8(x,y)
+                else:
+                    gameDisplay.fill(white)
+                    hang9(x,y)
+                    clock.tick(30)
+            elif i == 9:
+                if (i == 9) and (score == skyball):
+                    gameDisplay.fill(white)
+                    Win9(x,y)
+                else:
+                    gameDisplay.fill(white)
+                    hang10(x,y)
+                    clock.tick(30)
+            elif i == 10:
+                gameDisplay.fill(white)
+                hang11(x,y)
+                clock.tick(30)
+                crashed = True
+            RectColor()
+            intro()
+            scores()
+
+            message_display(ubuntu,30,(0,0,0),(525,150),Questlist_1[Q])
+            message_display(ubuntu,25,(0,0,0),(720,210),Answer_list[v])
+            message_display(ubuntu,25,(0,0,0),(720,240),Answer_list[b])
+            message_display(ubuntu,25,(0,0,0),(970,210),Answer_list[n])
+            message_display(ubuntu,25,(0,0,0),(970,240),Answer_list[m])
+            message_display(ubuntu,25,(0,0,0),(650,225),'Exit')
+            clock.tick(60)
+            pygame.display.update()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_pos = event.pos
+                if exitbutton.collidepoint(mouse_pos):
+                    print('You exited the program.')
+                    crashed = True
+
+                if button.collidepoint(mouse_pos):
+                    if AA_list[T] == 'A':
+                        score +=1
+                        Q += 1
+                        v += 4
+                        b += 4
+                        n += 4
+                        m += 4
+                        T += 1
+
+                    else:
+                        i += 1
+                if button2.collidepoint(mouse_pos):
+                    if  AA_list[T] == 'B':
+                        score +=1
+                        Q += 1
+                        v += 4
+                        b += 4
+                        n += 4
+                        m += 4
+                        T += 1
+
+                    else:
+                        i += 1
+                if button3.collidepoint(mouse_pos):
+                    if  AA_list[T] == 'C' :
+                        score +=1
+                        Q += 1
+                        v += 4
+                        b += 4
+                        n += 4
+                        m += 4
+                        T += 1
+
+                    else:
+                        i += 1
+                if button4.collidepoint(mouse_pos):
+                    if  AA_list[T] == 'D':
+                        score +=1
+                        Q += 1
+                        v += 4
+                        b += 4
+                        n += 4
+                        m += 4
+                        T += 1
+
+                    else:
+                        i += 1
+
+            if event.type == pygame.QUIT:
+                crashed = True
+
+
+            clock.tick(1)
+ubuntu = search_font('ubuntu')
+
+Questlist_1= FinalGUIModule.Question_list
+Answer_list= FinalGUIModule.Answer_list
+AA_list = FinalGUIModule.Actual_answer
+button = pygame.Rect(720, 210, 160, 25)
+button2 = pygame.Rect(720, 240, 160, 25)
+button3 = pygame.Rect(970, 210, 160, 25)
+button4 = pygame.Rect(970, 240, 160, 25)
+button5 = pygame.Rect(525, 150, 600, 50)
+exitbutton = pygame.Rect(650,210, 50, 50)
+x =  (display_width * 0.10)
+y = (display_height * .01)
+i = 0
+Q = 0
+A = 0
+v =0
+b=1
+n=2
+m=3
+T = 0
+skyball = 5
+score = 0
+score = int(score)
+while (i != 11) or (score != skyball):
+    gui()
+    pygame.display.update()
+    clock.tick(30)
+    pygame.quit()
+    quit()
